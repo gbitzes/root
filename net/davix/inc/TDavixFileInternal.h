@@ -45,6 +45,7 @@ namespace Davix {
    class Context;
    class RequestParams;
    class DavPosix;
+   class DavFile;
 }
 struct Davix_fd;
 
@@ -113,8 +114,15 @@ private:
 
    void removeDird(void* fd);
 
+   std::vector<std::string> getReplicas()
+   {
+     return replicas;
+   }
+
    TMutex positionLock;
    TMutex openLock;
+
+   std::vector<std::string> replicas;
 
    // DAVIX
    Davix::Context *davixContext;
